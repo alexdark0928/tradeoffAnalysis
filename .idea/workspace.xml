@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b240912-5860-4bba-a2e9-054727d763be" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ibm/cloudoe/samples/ConvertServlet.java" afterPath="$PROJECT_DIR$/src/com/ibm/cloudoe/samples/ConvertServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/index.jsp" afterPath="$PROJECT_DIR$/WebContent/index.jsp" />
-    </list>
+    <list default="true" id="2b240912-5860-4bba-a2e9-054727d763be" name="Default" comment="" />
     <ignored path="tradeoffAnalysis.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConvertServlet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConvertServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ibm/cloudoe/samples/ConvertServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08460237" vertical-offset="1042" max-vertical-offset="1638">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1042" max-vertical-offset="1638">
               <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -41,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.2" vertical-offset="5082" max-vertical-offset="5733">
+            <state vertical-scroll-proportion="0.22459893" vertical-offset="5082" max-vertical-offset="5733">
               <caret line="248" column="4" selection-start-line="248" selection-start-column="4" selection-end-line="248" selection-end-column="4" />
               <folding />
             </state>
@@ -389,12 +386,12 @@
       <created>1427843095085</created>
       <option name="number" value="Default" />
       <updated>1427843095085</updated>
-      <workItem from="1427843099004" duration="2089000" />
+      <workItem from="1427843099004" duration="2194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2089000" />
+    <option name="totallyTimeSpent" value="2194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -479,21 +476,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2" vertical-offset="5082" max-vertical-offset="5733">
-          <caret line="248" column="4" selection-start-line="248" selection-start-column="4" selection-end-line="248" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ibm/cloudoe/samples/ConvertServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08460237" vertical-offset="1042" max-vertical-offset="1638">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1042" max-vertical-offset="1638">
           <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22459893" vertical-offset="5082" max-vertical-offset="5733">
+          <caret line="248" column="4" selection-start-line="248" selection-start-column="4" selection-end-line="248" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
