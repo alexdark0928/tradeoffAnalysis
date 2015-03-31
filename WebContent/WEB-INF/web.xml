@@ -17,4 +17,13 @@
 		<servlet-name>Application Servlet</servlet-name>
 		<url-pattern>/demo</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Convert Servlet</servlet-name>
+		<servlet-class>com.ibm.cloudoe.samples.ConvertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Convert Servlet</servlet-name>
+		<url-pattern>/convert</url-pattern>
+	</servlet-mapping>
+		
 </web-app>
