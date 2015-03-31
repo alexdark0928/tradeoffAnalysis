@@ -1,7 +1,8 @@
 package com.ibm.cloudoe.samples;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ public class ConvertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// If running locally complete the variables below with the information in VCAP_SERVICES
-	private String baseURL = "<url>"; //api 
+	private String baseURL = "http://risk-test.mybluemix.net/api/results/"; //api
 	private String fileName = "risk-analysis.json";
 	
 	@Override
@@ -38,15 +39,18 @@ public class ConvertServlet extends HttpServlet {
 		JsonParser parser1 = new JsonParser();
 		JsonObject jsonObject1 = parser1.parse(reader.readLine()).getAsJsonObject();
 		JsonArray options = jsonObject1.get("options").getAsJsonArray();
-		
-		URL callAPI = new URL(baseURL + ); // add from req.
+
+
+		String cpName = req.getParameter("companyName");
+		String cpYear = req.getParameter("year");
+		URL callAPI = new URL(baseURL + cpName + "?=year" + cpYear ); // add from req.
 		BufferedReader br = new BufferedReader(new InputStreamReader(callAPI.openStream()));
 		String str = br.readLine();
 		JsonParser parser2 = new JsonParser();
 		JsonObject jsonObject2 = parser2.parse(str).getAsJsonObject();
 		JsonObject newOption = new JsonObject();
 		newOption.addProperty("key", options.size() + 1);
-		newOption.addProperty("name", "whatever"); // add from req.
+		newOption.addProperty("name", cpName); // add from req.
 		newOption.add("values", jsonObject2);
 		newOption.addProperty("description_html", "");
 		newOption.add("app_data", new JsonObject());

@@ -49,6 +49,8 @@
 				</div>
 			</div>
 		</div>
+
+
 		<!-- <div class="row">
 			<div class="col-lg-12 col-xs-12">
 				<h2>crawl the risk data</h2>
@@ -64,7 +66,24 @@
 				</div>
 			</div>
 		</div> -->
-			
+
+		<div class="row">
+			<div class="col-lg-12 col-xs-12">
+				<h2>get the company data</h2>
+				<div class="well">
+					<div class="form-group row">
+						<div>
+							<button type="button" onclick="crawlData()">get data</button>
+						</div>
+						<div>
+							<textarea id="name"></textarea>
+							<textarea id="year"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-lg-12 col-xs-12">
 				<h2>Try the service</h2>
@@ -130,7 +149,7 @@
 							<div class="form-group row">
 								<div class="col-lg-12">
 									<label class="control-label">Customize features:</label><a
-										href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tradeoff-analytics/#usingProfiles"	
+										href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tradeoff-analytics/#usingProfiles"
 										target="blank"><img alt="information"
 										src="images/info.png" class="informationIcon"></a>
 									<p>There are two types of profiles: Basic and Advanced.
@@ -231,14 +250,16 @@
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="https://ta-cdn.mybluemix.net/TradeoffAnalytics.js"></script>
 	<script src="js/index.js"></script>
+
 	<script type="text/javascript">
 		function crawlData(){
 			$.ajax({
 			  dataType: "jsonp",
 			  async: false,
-			  url: "http://risk-test.mybluemix.net/api/results/IBM?year=2014",
-			  method: "GET",
-			  
+//			  url: "http://risk-test.mybluemix.net/api/results/IBM?year=2014",
+			  data: {companyName: $('#name').val() , year: $('#year').val()},
+			  method: "GET"
+
 			});
 		}
 	</script>
