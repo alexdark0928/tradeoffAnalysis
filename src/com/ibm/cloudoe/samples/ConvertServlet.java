@@ -60,7 +60,7 @@ public class ConvertServlet extends HttpServlet {
 		values.put("Suppliers risks", jsonObject2.get("Suppliers risks"));
 		values.put("New product introduction risks", jsonObject2.get("New product introduction risks"));
 		values.put("Intellectual Property Risks", jsonObject2.get("Intellectual Property Risks"));
-		values.put("International risks", jsonObject2.get("nternational risks"));
+		values.put("International risks", jsonObject2.get("International risks"));
 		newOption.put("key", options.size() + 1);
 		newOption.put("name", cpName); // add from req.
 		newOption.put("values", values);

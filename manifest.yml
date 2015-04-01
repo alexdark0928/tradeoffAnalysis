@@ -1,7 +1,7 @@
 applications:
 - disk_quota: 1024M
-  host: risk-test-chang
-  name: tradeoff-test-chang
+  host: risk-test-fatcloud
+  name: tradeoff-test-fatcloud
   path: output/webApp.war
   domain: mybluemix.net
   memory: 512M
