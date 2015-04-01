@@ -83,7 +83,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="col-lg-12 col-xs-12">
 				<h2>Try the service</h2>
@@ -92,11 +91,7 @@
 						<div class="col-lg-6 col-md-6 col-xs-6">
 							<label for="problems" class="control-label">Select a
 								scenario to find the best options in the scenario:</label><select
-								id="problems" class="problems form-control"><option
-									value="phones.json">Phones</option>
-								<option value="finance.json">Finance</option>
-								<option value="treatments-selection.json">Treatments-selection</option>
-								<option value="drug-candidates.json">Drug-candidates</option>
+								id="problems" class="problems form-control">
 								<option value="risk-analysis.json">Risk-analysis</option></select>
 						</div>
 						<div class="col-lg-6 col-md-6 col-xs-6 text-right">
@@ -254,12 +249,14 @@
 	<script type="text/javascript">
 		function crawlData(){
 			$.ajax({
-			  dataType: "jsonp",
+			  dataType: "json",
 			  async: false,
-//			  url: "http://risk-test.mybluemix.net/api/results/IBM?year=2014",
-			  data: {companyName: $('#name').val() , year: $('#year').val()},
-			  method: "GET"
-
+			  url: "/convert",
+			  data: {companyName: $('#name').val() , year: $('#year').val() , source: $('.problemText').val() },
+			  method: "POST",
+			  success: function(data) {
+			  	$('.problemText').val(JSON.stringify(data, null, 2)).change();
+			  }
 			});
 		}
 	</script>

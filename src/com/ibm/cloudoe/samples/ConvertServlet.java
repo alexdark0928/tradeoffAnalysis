@@ -5,6 +5,12 @@ import java.net.URI;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -22,47 +28,51 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.util.EntityUtils;
 
-import com.google.gson.*;
+import com.ibm.json.java.JSONArray;
+import com.ibm.json.java.JSONObject;
 
 public class ConvertServlet extends HttpServlet {
-	private static Logger logger = Logger.getLogger(DemoServlet.class.getName());
+	private static Logger logger = Logger.getLogger(ConvertServlet.class.getName());
 	private static final long serialVersionUID = 1L;
 
 	// If running locally complete the variables below with the information in VCAP_SERVICES
-	private String baseURL = "http://risk-test.mybluemix.net/api/results/"; //api
-	private String fileName = "risk-analysis.json";
+	private String baseURL = "http://riskadvisor.mybluemix.net/api/category/"; //api
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		File file = new File(fileName);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		JsonParser parser1 = new JsonParser();
-		JsonObject jsonObject1 = parser1.parse(reader.readLine()).getAsJsonObject();
-		JsonArray options = jsonObject1.get("options").getAsJsonArray();
-
-
+		String source = req.getParameter("source");
+		JSONObject jsonObject1 = JSONObject.parse(source);
+		JSONArray options = (JSONArray)jsonObject1.get("options");
+		
 		String cpName = req.getParameter("companyName");
 		String cpYear = req.getParameter("year");
-		URL callAPI = new URL(baseURL + cpName + "?=year" + cpYear ); // add from req.
+		URL callAPI = new URL(baseURL + cpName + "?year=" + cpYear ); // add from req.
 		BufferedReader br = new BufferedReader(new InputStreamReader(callAPI.openStream()));
 		String str = br.readLine();
-		JsonParser parser2 = new JsonParser();
-		JsonObject jsonObject2 = parser2.parse(str).getAsJsonObject();
-		JsonObject newOption = new JsonObject();
-		newOption.addProperty("key", options.size() + 1);
-		newOption.addProperty("name", cpName); // add from req.
-		newOption.add("values", jsonObject2);
-		newOption.addProperty("description_html", "");
-		newOption.add("app_data", new JsonObject());
+		JSONObject jsonObject2 = JSONObject.parse(str);
+		JSONObject newOption = new JSONObject();
+		JSONObject values = new JSONObject();
+		values.put("Funding risks", jsonObject2.get("Funding risks"));
+		values.put("Competition risks", jsonObject2.get("Competition risks"));
+		values.put("Downstream risks", jsonObject2.get("Downstream risks"));
+		values.put("Macroeconomic risks", jsonObject2.get("Macroeconomic risks"));
+		values.put("Input prices risks", jsonObject2.get("Input prices risks"));
+		values.put("Suppliers risks", jsonObject2.get("Suppliers risks"));
+		values.put("New product introduction risks", jsonObject2.get("New product introduction risks"));
+		values.put("Intellectual Property Risks", jsonObject2.get("Intellectual Property Risks"));
+		values.put("International risks", jsonObject2.get("nternational risks"));
+		newOption.put("key", options.size() + 1);
+		newOption.put("name", cpName); // add from req.
+		newOption.put("values", values);
+		newOption.put("description_html", "");
+		newOption.put("app_data", new JSONObject());
 		options.add(newOption);
 		
-		File output = new File("tradeoff.json");
-		BufferedWriter out = new BufferedWriter(new FileWriter(output));
-		out.write(jsonObject1.toString());
-		
-		out.close();
-		reader.close();
 		br.close();
+		
+		PrintWriter out = resp.getWriter();
+		out.println(jsonObject1.toString());
+		out.close();
 	}
 
 	@Override

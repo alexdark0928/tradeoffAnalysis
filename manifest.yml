@@ -1,11 +1,7 @@
----
-declared-services:
-  tradeoff-analytics-service:
-    label: tradeoff_analytics
-    plan: free
 applications:
-- services:
-  - tradeoff-analytics-service
-  name: tradeoff-test
+- disk_quota: 1024M
+  host: risk-test-chang
+  name: tradeoff-test-chang
   path: output/webApp.war
+  domain: mybluemix.net
   memory: 512M
